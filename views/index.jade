@@ -1,5 +1,15 @@
-extends layout
+extends header
 
 block content
-  h1= title
-  p Welcome to #{title}
+  div(class='container-fluid')
+    div(class='row')
+      div(class='col-md-4 index-left')
+        h3 列表
+        ul
+          li asdfs
+      div(class='col-md-8') 右侧内容
+
+
+  script(type='text/javascript', src='lib/js/jquery.js')
+  script(type='text/javascript', src='lib/js/bootstrap.js')
+

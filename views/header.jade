@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    title= title
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='lib/css/bootstrap.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+
+  body
+    div(class='continer position-rel')
+      header(id='header', class='container-fluid') 
+        h1(class='title') #{siteName}
+      block content

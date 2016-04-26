@@ -6,22 +6,25 @@ body{
 body {
   padding: 0;
   margin: 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "微软雅黑", "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-  padding: 0;
+.position-abs{
+  position: absolute;
 }
-a {
-  color: #00B7FF;
+.position-rel{
+  position: relative;
+}
+.position-sta{
+  position: static;
 }
 #header{
   height: 80px;
   line-height: 80px;
   border-bottom: 1px solid #00B7FF;
+} 
+#header .title{
+  margin-top: 15px;
+}
+.index-left{
+  background: #f0f0f0;
 }
