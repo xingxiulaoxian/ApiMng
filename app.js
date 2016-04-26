@@ -7,8 +7,10 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-
+var download = require('./routes/download');
 var app = express();
+
+var port = 9000;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/download', download);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -55,6 +58,8 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
+app.listen(port, function () {
+  console.log('程序运行在端口' + port);
+});
 
 module.exports = app;
