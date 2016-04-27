@@ -17,6 +17,9 @@ body {
 .position-sta{
   position: static;
 }
+.height-full{
+  height: 100%;
+}
 #header{
   height: 80px;
   line-height: 80px;
@@ -26,5 +29,28 @@ body {
   margin-top: 15px;
 }
 .index-left{
-  background: #f0f0f0;
+  border-right: 1px solid #999;
+}
+.index-content{
+  height: 100%;
+  margin-top: -80px;
+  padding-top: 80px;
+  box-sizing: border-box;
+}
+.index-sider-bar-title{
+  font-size: 1rem;
+  line-height: 1.75rem;
+  border-bottom: 1px solid #00B7FF;
+}
+.index-sider-bar-ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.index-sider-bar-ul li{
+  line-height: 1.5em;
+}
+.index-sider-bar-ul li:hover{
+  background: #00B7FF;
+  color: #FFFFFF;
 }

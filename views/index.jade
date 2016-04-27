@@ -1,15 +1,23 @@
 extends header
 
 block content
-  div(class='container-fluid')
-    div(class='row')
-      div(class='col-md-4 index-left')
-        h3 列表
-        ul
+  div.container-fluid.index-content
+    div.row.height-full
+      div.col-md-3.index-left.height-full
+        h3.index-sider-bar-title 列表
+        ul.index-sider-bar-ul
+          li
+            span#addnewapi +
           li asdfs
-      div(class='col-md-8') 右侧内容
+          li asdfs
+          li asdfs
+          li asdfs
+          li asdfs
+          li asdfs
+      div.col-md-9.height-full 右侧内容
 
 
-  script(type='text/javascript', src='lib/js/jquery.js')
-  script(type='text/javascript', src='lib/js/bootstrap.js')
+  script(src='lib/js/jquery.js')
+  script(src='lib/js/bootstrap.js')
+  script(src='/js/index.js')
 

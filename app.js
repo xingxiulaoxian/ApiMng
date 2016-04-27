@@ -28,6 +28,9 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/download', download);
 
+app.post('/active/addNewApi', function(req, res){
+  res.send({status:'success'});
+})
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
