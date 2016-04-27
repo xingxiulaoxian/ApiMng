@@ -14,5 +14,9 @@
     "morgan": "~1.6.1",
     "serve-favicon": "~2.3.0"
   },
-  "author": "xingxiulaoxian"
+  "author": "xingxiulaoxian",
+  "devDependencies": {
+    "mongodb": "^2.1.17",
+    "mongoskin": "^2.1.0"
+  }
 }
