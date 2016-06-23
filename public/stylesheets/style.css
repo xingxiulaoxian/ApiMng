@@ -52,5 +52,22 @@ body {
 }
 .index-sider-bar-ul li:hover{
   background: #00B7FF;
-  color: #FFFFFF;
+  color: #0074D9;
+}
+#api-list span{
+  display: inline-block;
+  width: 100px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  float: left;
+}
+#api-list a{
+  float: right;
+}
+#api-list i{
+  color: #f00;
+}
+#api-list li{
+  height: 30px;
+  line-height: 30px;
 }

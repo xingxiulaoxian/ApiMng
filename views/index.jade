@@ -9,8 +9,16 @@ block content
         ul.index-sider-bar-ul#api-list
 
           -for (var i = 0; i < list.length; i++) {
-            li #{list[i]}
+            li 
+              span #{list[i].uuid} 
+              a(href="list[i].link") #{list[i].link}
+              i #{list[i].param}
           -}
+
+        form 
+          input#link-text(type="text")
+          input#link-param(type="text")
+          input#add-api-btn(type="button" value="增加")
 
         div#addnewapi
           span +

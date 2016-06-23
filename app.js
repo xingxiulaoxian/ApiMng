@@ -39,9 +39,22 @@ function guidGenerator() {
     return (S4() + S4() + S4() + S4() + S4() + S4() + S4() + S4());
 }
 app.post('/active/addNewApi', function(req, res){
-  dataCount.addDataCount(guidGenerator());
-  var dataArr = dataCount.getDataCount();
-  res.send({status:'success', list:dataArr});
+  console.dir(req.body)
+  var query = req.body;
+  if(!query.link){
+    res.send({status:error})
+  }else{
+    var newApiObj = {
+      uuid : guidGenerator(),
+      link : query.link,
+      param: query.param
+    }
+    dataCount.addDataCount(newApiObj);
+    var dataArr = dataCount.getDataCount();
+    res.send({status:'success', list:dataArr});
+  }
+
+
 });
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
