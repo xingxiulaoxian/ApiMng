@@ -8,8 +8,12 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var download = require('./routes/download');
+
+var dataCount = require('./data/dataCount');
+
 var app = express();
 
+console.dir(dataCount);
 var port = 9000;
 
 // view engine setup
@@ -28,9 +32,17 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/download', download);
 
+function guidGenerator() {
+    var S4 = function() {
+        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+    };
+    return (S4() + S4() + S4() + S4() + S4() + S4() + S4() + S4());
+}
 app.post('/active/addNewApi', function(req, res){
-  res.send({status:'success'});
-})
+  dataCount.addDataCount(guidGenerator());
+  var dataArr = dataCount.getDataCount();
+  res.send({status:'success', list:dataArr});
+});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

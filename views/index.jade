@@ -5,15 +5,15 @@ block content
     div.row.height-full
       div.col-md-3.index-left.height-full
         h3.index-sider-bar-title 列表
-        ul.index-sider-bar-ul
-          li
-            span#addnewapi +
-          li asdfs
-          li asdfs
-          li asdfs
-          li asdfs
-          li asdfs
-          li asdfs
+        
+        ul.index-sider-bar-ul#api-list
+
+          -for (var i = 0; i < list.length; i++) {
+            li #{list[i]}
+          -}
+
+        div#addnewapi
+          span +
       div.col-md-9.height-full 右侧内容
 
 
