@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var http = require('http');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -11,10 +12,13 @@ var download = require('./routes/download');
 
 var dataCount = require('./data/dataCount');
 
+var sqlite3 = require('sqlite3');
 var app = express();
 
 console.dir(dataCount);
 var port = 9000;
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,30 +36,7 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/download', download);
 
-function guidGenerator() {
-    var S4 = function() {
-        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-    };
-    return (S4() + S4() + S4() + S4() + S4() + S4() + S4() + S4());
-}
-app.post('/active/addNewApi', function(req, res){
-  console.dir(req.body)
-  var query = req.body;
-  if(!query.link){
-    res.send({status:error})
-  }else{
-    var newApiObj = {
-      uuid : guidGenerator(),
-      link : query.link,
-      param: query.param
-    }
-    dataCount.addDataCount(newApiObj);
-    var dataArr = dataCount.getDataCount();
-    res.send({status:'success', list:dataArr});
-  }
 
-
-});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -86,8 +67,30 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
+//转发地址
+//https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=yuhfhfhk&secret=hjgkjgjk
+var httpReq = http.get({
+  host:'codego.net'
+}, function(res){
+  console.log(httpReq)
+});
+// request.get({
+//     url:'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=yuhfhfhk&secret=hjgkjgjk'
+//   }.on('response', function (response) {
+//     console.log(respinse);
+//     //res.set(response.headers);
+//   })
+//   .on('error', function (err) {
+//     console.log(err);
+//     //logger.error(err);
+//   })
+//   //.pipe(res);
+// )
+
 app.listen(port, function () {
   console.log('程序运行在端口' + port);
+  console.log('127.0.0.1:' + port);
 });
 
 
