@@ -9,7 +9,7 @@ block content
         ul.index-sider-bar-ul#api-list
 
           -for (var i = 0; i < list.length; i++) {
-            li 
+            li(data-uuid=list[i].uuid) 
               span #{list[i].uuid} 
               a(href=list[i].link) #{list[i].link}
               i #{list[i].param}
