@@ -39,16 +39,17 @@ function guidGenerator() {
     return (S4() + S4() + S4() + S4() + S4() + S4() + S4() + S4());
 }
 app.post('/active/addNewApi', function(req, res){
-  console.dir(req.body)
+  console.dir(req.body);
   var query = req.body;
   if(!query.link){
-    res.send({status:error})
+    res.send({status:error});
   }else{
+    var param = typeof query.param == 'object' ? query.param : [query.param];
     var newApiObj = {
       uuid : guidGenerator(),
       link : query.link,
-      param: query.param
-    }
+      param: param
+    };
     dataCount.addDataCount(newApiObj);
     var dataArr = dataCount.getDataCount();
     res.send({status:'success', list:dataArr});

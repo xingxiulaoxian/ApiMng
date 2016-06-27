@@ -11,17 +11,17 @@ block content
           -for (var i = 0; i < list.length; i++) {
             li 
               span #{list[i].uuid} 
-              a(href="list[i].link") #{list[i].link}
+              a(href=list[i].link) #{list[i].link}
               i #{list[i].param}
           -}
 
-        form 
-          input#link-text(type="text")
-          input#link-param(type="text")
+        form.add-form(name="add-link")
+          input(type="text" name="link")
+          input(type="text" name="param")
+
+          input#add-param(type="button" value="+")
           input#add-api-btn(type="button" value="增加")
 
-        div#addnewapi
-          span +
       div.col-md-9.height-full 右侧内容
 
 

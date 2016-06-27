@@ -66,8 +66,15 @@ body {
 }
 #api-list i{
   color: #f00;
+  display: inline-block;
+  width: 110px;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 #api-list li{
   height: 30px;
   line-height: 30px;
+}
+.add-form input{
+  width: 100%;
 }
