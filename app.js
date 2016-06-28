@@ -71,9 +71,16 @@ app.use(function(err, req, res, next) {
 //转发地址
 //https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=yuhfhfhk&secret=hjgkjgjk
 var httpReq = http.get({
-  host:'codego.net'
+  host:'www.cnblogs.com'
 }, function(res){
+<<<<<<< HEAD
   console.log(httpReq);
+=======
+  //console.log(httpReq)
+  res.on('data',function (chunk) {
+    console.log('BODY: ' + chunk);
+  });
+>>>>>>> ed3ab14d50c9530e9f63d1541c2c306669df6a37
 });
 // request.get({
 //     url:'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=yuhfhfhk&secret=hjgkjgjk'
