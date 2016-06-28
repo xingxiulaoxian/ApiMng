@@ -9,18 +9,18 @@ router.get('/', function(req, res, next) {
   var db = new sqlite3.Database('./data/database.db', function(){
     db.all(selectLink, function(err, response){
       if(!err){
-        console.log('查询正常')
+        console.log('查询正常');
 			  res.render('index', { 
 			  	title: 'Express', 
 			  	siteName : 'api管理系统',
 			  	list : response
 			  });
      	} else {
-        console.log('错误')
+        console.log('错误');
         console.log(err);  
       } 
-    })
-  })
+    });
+  });
 });
 
 
@@ -52,6 +52,7 @@ var addNewApiResult = {
 //addNewApi
 router.post('/action/addNewApi', function (req, res) {
   var query = req.body;
+  console.log(query);
   if(!query.link){
     res.send(addNewApiResult);
   }else{
@@ -62,25 +63,25 @@ router.post('/action/addNewApi', function (req, res) {
       db.run(insertLink, function(){
         db.all(selectLink, function(err, response){
           if(!err){
-            console.log('查询正常')
+            console.log('查询正常');
             res.send({
               status : 'success',
               list : response
             });
           }
           else {
-            console.log('查询失败')
+            console.log('查询失败');
             console.log(err);
             res.send({
               status : 'error',
               list : []
             });
           }
-        })
-      })
-    })
+        });
+      });
+    });
   }
-})
+});
 
   // 删除sql
   // function createDleteSql(uuidStr){
@@ -100,43 +101,43 @@ router.post('/action/toggleApi', function (req, res) {
     for (var i = 0; i < uuidArr.length; i++) {
       sql += ' uuid="' + uuidArr[i] +'"';
     }
-    console.log(sql)
+    console.log(sql);
     return sql;
   }
 
   var query = req.body;
-  console.log(query)
+  console.log(query);
   if(!query.uuids){
     res.send({
       status : 'error',
       message : query
-    })
+    });
   }else{
 
     var db = new sqlite3.Database('./data/database.db', function(){
       db.run(createSql(query.uuids, query.status), function(){
         db.all(selectLink, function(err, response){
           if(!err){
-            console.log('查询正常')
+            console.log('查询正常');
             res.send({
               status : 'success',
               list : response
             });
           } else {
-            console.log('查询失败')
+            console.log('查询失败');
             console.log(err);
             res.send({
               status : 'error',
               list : []
             });
           }
-        })
-      })
-    })
+        });
+      });
+    });
 
 
   }
 
-})
+});
 
 module.exports = router;

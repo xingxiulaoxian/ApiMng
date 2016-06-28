@@ -1,11 +1,10 @@
 $(function(){
     var $apiList = $('#api-list');
     $('#add-api-btn').on('click', function(){
-        var query = $('form').serialize();
+        var query = $('form[name="add-link"]').serializeArray();
         console.log(query);
-        var link = $('#link-text').val();
 
-        $.post('./active/addNewApi', query, function(data){
+        $.post('./action/addNewApi', query, function(data){
             $apiList.html(callback(data.list));
             console.log('请求结束');
         });
